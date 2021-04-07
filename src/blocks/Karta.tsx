@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import PointList from './PointsList'
+import OnClick from './OnClick'
 import 'ol/ol.css';
 import { Map, View, Overlay } from 'ol';
 import TileLayer from 'ol/layer/Tile';
@@ -42,11 +43,16 @@ const MapObject = [
   },
 ]
 
-const myFeatures = MapObject.map(elem =>{
+const inf = {
+  title: "",
+  description:""
+}
+
+const myFeatures = MapObject.map(elem => {
   return new Feature({
     geometry: new Point(elem.coordinates),
     title: elem.title,
-    description:elem.description
+    description: elem.description
   })
 })
 
@@ -92,19 +98,40 @@ const map = new Map({
 
 const popup = document.getElementById('popup')! as HTMLElement;
 
-
 map.on('click', function (evt) {
   const feature = map.forEachFeatureAtPixel(evt.pixel, function (feature) {
     return feature;
   });
   if (feature) {
-    console.log("True")
+
+    // setInf({
+    //   title: feature.get("title"),
+    //   description: feature.get("description")
+    // })
+
+    console.log("True");
+      inf.title = feature.get("title");
+      inf.description = feature.get("description");
+
+    console.log(inf);
+
+    //popup.innerHTML=`<p>${inf.title}</p><p>${inf.description}</p>`;
   } else {
-    console.log("false")
+    console.log("false");
+    inf.title = "";
+    inf.description = "";
+    // console.log(inf);
+    //popup.innerHTML="";
   }
 });
 
+
 export default function Kart() {
+  // const [inf, setInf] = React.useState({
+  //   title: "",
+  //   description: ""
+  // });
+  
 
   useEffect(() => {
     map.setTarget("map");
@@ -112,7 +139,9 @@ export default function Kart() {
 
 
   return (<div id="map" style={{ width: "100%", height: "100%" }}>
-    {/* <div id="popup"></div> */}
-    <PointList arrayPoints={MapObject}/>
+    <div id="popup">
+      {/* <OnClick information={inf} /> */}
+    </div>
+    <PointList arrayPoints={MapObject} />
   </div>);
 }

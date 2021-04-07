@@ -13,7 +13,7 @@ export default function App() {
   return (
     <>
     <Karta />
-    <OnClick information={information}/>
+    {/* <OnClick information={information}/> */}
     </>
   );
 }
