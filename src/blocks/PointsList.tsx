@@ -3,21 +3,6 @@ import 'antd/dist/antd.css';
 import './sass/PointList.sass'
 import { List, Card } from 'antd';
 
-const data = [
-    {
-        title: 'Title 1',
-    },
-    {
-        title: 'Title 2',
-    },
-    {
-        title: 'Title 3',
-    },
-    {
-        title: 'Title 4',
-    },
-];
-
 export default class PointList extends React.Component <{
     arrayPoints:{
         coordinates:number[],

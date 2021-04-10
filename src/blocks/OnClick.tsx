@@ -20,7 +20,7 @@ export default class OnClick extends React.Component<{
         title={this.props.information.title}
         visible={this.state.visible}
       >
-        {/* <Button>Click me</Button> */}
+        <Button>Click me</Button> 
       </Popover>
     );
   }
