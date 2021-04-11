@@ -104,6 +104,9 @@ export default function DSTUMap() {
     map.addOverlay(popup);
     popup.setElement(document.getElementById('popup')!);
 
+    const popupTitle = document.getElementById("popup_title")!;
+    const popupDescription = document.getElementById("popup_description")!;
+
     map.on('click', function (evt) {
       const feature = map.forEachFeatureAtPixel(evt.pixel, function (feature) {
         return feature;
@@ -112,17 +115,15 @@ export default function DSTUMap() {
         console.log("True");
         popup.setPosition(feature.get("geometry").flatCoordinates);
         popup.getElement()!.style.display = "block";
-        // setOverlayIformation(() =>{ return {
-        //   title:feature.get("title"),
-        //   description:feature.get("description"),
-        // }});
+        popupTitle.innerText = feature.get("title");
+        popupDescription.innerText = feature.get("description");
 
       } else {
         console.log("false");
         popup.getElement()!.style.display = "none";
       }
-    });
-
+    })
+    
   })
 
   return (

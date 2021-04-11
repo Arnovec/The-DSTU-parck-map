@@ -11,10 +11,10 @@ export default class Popup extends React.Component<{
         return (
             <div id="popup">
                 <div className="popup_content">
-                    <p className="popup_title">
+                    <p id="popup_title">
                         {this.props.information.title}
                     </p>
-                    <p className="popup_description">
+                    <p id="popup_description">
                         {this.props.information.description}
                     </p>
                 </div>
