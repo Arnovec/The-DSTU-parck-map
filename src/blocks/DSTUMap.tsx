@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import PointList from './PointsList'
 import Popup from './Popup'
-import OnClick from './OnClick'
 import 'ol/ol.css';
 import OverlayPositioning from 'ol/OverlayPositioning'
 import { Map, View, Overlay } from 'ol';
@@ -94,21 +93,16 @@ export default function DSTUMap() {
     }),
   });
 
-  //
-
-
   const popup = new Overlay({
     position: [4420591, 5981353],
     positioning: OverlayPositioning.BOTTOM_CENTER,
   });
-
 
   useEffect(() => {
     map.setTarget("map");
 
     map.addOverlay(popup);
     popup.setElement(document.getElementById('popup')!);
-    //popup.getElement()!.style.display = "none";
 
     map.on('click', function (evt) {
       const feature = map.forEachFeatureAtPixel(evt.pixel, function (feature) {
@@ -122,9 +116,6 @@ export default function DSTUMap() {
         //   title:feature.get("title"),
         //   description:feature.get("description"),
         // }});
-        // feature.get("title");
-        // feature.get("description");
-        // console.log();
 
       } else {
         console.log("false");
@@ -134,16 +125,12 @@ export default function DSTUMap() {
 
   })
 
-
-  //
-
   return (
     <>
       <div id="map" style={{ width: "100%", height: "100%" }}>
         <PointList arrayPoints={MapObjects} />
         <Popup information={OverlayInformation} />
       </div>
-      {/* <OnClick information={OverlayInformation}/> */}
     </>
   );
 }

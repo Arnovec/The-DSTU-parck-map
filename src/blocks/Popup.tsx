@@ -1,21 +1,24 @@
 import React from 'react'
+import './sass/mapContent.sass'
 
 export default class Popup extends React.Component<{
-    information:{
-        title:string,
-        description:string
+    information: {
+        title: string,
+        description: string
     }
 }> {
     render() {
-        //console.log(this.props);
         return (
-            <div id="popup" style={{ backgroundColor: "red", display:"none" }}>
-                <p>
-                    {this.props.information.title}
-                </p>
-                <p>
-                    {this.props.information.description}
-                </p>               
+            <div id="popup">
+                <div className="popup_content">
+                    <p className="popup_title">
+                        {this.props.information.title}
+                    </p>
+                    <p className="popup_description">
+                        {this.props.information.description}
+                    </p>
+                </div>
+                <div className="popover_arrow"></div>
             </div>
         )
     }

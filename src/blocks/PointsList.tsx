@@ -1,6 +1,6 @@
 import React from 'react';
 import 'antd/dist/antd.css';
-import './sass/PointList.sass'
+import './sass/mapContent.sass'
 import { List, Card } from 'antd';
 
 export default class PointList extends React.Component <{
