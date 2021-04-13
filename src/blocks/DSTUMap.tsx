@@ -62,7 +62,7 @@ export default function DSTUMap() {
       new Style({
       image: new Icon({
         src: `/image/${elem.type}.png`,
-      })
+      }),
     })
   );
     return feature;
@@ -92,7 +92,6 @@ export default function DSTUMap() {
   });
 
   const popup = new Overlay({
-    position: [4420591, 5981353],
     positioning: OverlayPositioning.BOTTOM_CENTER,
   });
 
@@ -112,7 +111,7 @@ export default function DSTUMap() {
       popupDescription.innerText = feature.get("description");
     }
 
-    const zoomsToPoint = [...document.getElementsByClassName("ant-col")]//! as HTMLElement[]
+    const zoomsToPoint = [...document.getElementsByClassName("ant-col")]
     zoomsToPoint.map((elem, id) =>{
       elem.addEventListener(
         'click',
